@@ -17,17 +17,30 @@ repositories {
 	maven { url = uri("https://repo.spring.io/milestone") }
 }
 
+val mySqlVersion = "8.0.14"
+val javaxValidationVersion = "2.0.1.Final"
+
 extra["springCloudVersion"] = "2020.0.0"
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-amqp")
+	//mysql
+	implementation ("mysql:mysql-connector-java:$mySqlVersion")
+
+	//Spring
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	//Javax
+	implementation ("javax.validation:validation-api:$javaxValidationVersion")
+
+	//Jackson
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+	//JetBrains
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.springframework.cloud:spring-cloud-starter-zookeeper-config")
-	implementation("org.springframework.kafka:spring-kafka")
+
+
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.amqp:spring-rabbit-test")
